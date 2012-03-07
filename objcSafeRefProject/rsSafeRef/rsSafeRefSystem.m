@@ -85,7 +85,7 @@ id rs_storeSafeRef(id *object, id value){
     beginSafeRefArray();
     
     if (!value) return nil;
-    dispatch_queue_t q=dispatch_queue_create("com.callaway.storeSafeRef", NULL);    
+    dispatch_queue_t q=dispatch_queue_create("com.objcSafeRef.storeSafeRef", NULL);    
     dispatch_sync(q, ^{
         
         __rs_safe_ref ref;
@@ -111,7 +111,7 @@ void rs_nullSafeRef(id value){
     
     
     __block __rs_safe_array *removed_tags=rs_safeRefArrayNew(1);
-    dispatch_queue_t q=dispatch_queue_create("com.callaway.nullSafeRef", NULL);    
+    dispatch_queue_t q=dispatch_queue_create("com.objcSafeRef.nullSafeRef", NULL);    
     dispatch_apply(__refs->num, q, ^(size_t index){ 
         
         if (__refs->refs[index].value==value) {
@@ -125,7 +125,7 @@ void rs_nullSafeRef(id value){
     });
     dispatch_release(q);
     
-    q=dispatch_queue_create("com.callaway.nullSafeRefP2", NULL);    
+    q=dispatch_queue_create("com.objcSafeRef.nullSafeRefP2", NULL);    
     dispatch_apply(removed_tags->num, q, ^(size_t index){ 
         rs_safeRefArrayRemoveObjectAtIndex(__refs, removed_tags->refs[index].tag);
     });
