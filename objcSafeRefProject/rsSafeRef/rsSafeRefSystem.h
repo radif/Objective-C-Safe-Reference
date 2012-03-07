@@ -1,5 +1,5 @@
 //
-//  cdaWeakSystem.h
+//  rsSafeRefSystem.h
 //
 //
 //  Created by Radif Sharafullin on 3/7/12.

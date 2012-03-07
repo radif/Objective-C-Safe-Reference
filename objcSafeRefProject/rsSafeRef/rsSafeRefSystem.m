@@ -1,5 +1,5 @@
 //
-//  cdaSafeRefSystem.c
+//  rsSafeRefSystem.c
 //
 //
 //  Created by Radif Sharafullin on 3/7/12.
