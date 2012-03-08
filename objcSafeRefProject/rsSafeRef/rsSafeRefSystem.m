@@ -133,7 +133,7 @@ void rs_nullSafeRef(id value){
     dispatch_release(q);
     
 }
-void MethodSwizzle(Class c, SEL orig, SEL new){
+void __safe_ref_method_swizzle(Class c, SEL orig, SEL new){
     Method origMethod = class_getInstanceMethod(c, orig);
     Method newMethod = class_getInstanceMethod(c, new);
     if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod)))
@@ -149,7 +149,7 @@ static IMP deallocFunctionIMP=nil;
     static dispatch_once_t registerSafeRefOnceToken;
     dispatch_once(&registerSafeRefOnceToken, ^{
         deallocFunctionIMP=[NSObject instanceMethodForSelector:@selector(dealloc)];
-        MethodSwizzle([NSObject class],@selector(dealloc),@selector(nullSafeRefsAndDealloc));
+        __safe_ref_method_swizzle([NSObject class],@selector(dealloc),@selector(nullSafeRefsAndDealloc));
     });
     
     //isSwizzled=TRUE;
