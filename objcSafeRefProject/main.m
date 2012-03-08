@@ -79,6 +79,7 @@ int main(int argc, const char * argv[])
         // insert code here...
         
         printf("------Manual Safe Ref Example:\n");
+        //for toll free bridged object (NSString, NSDictionary, etc)
         testManualSafeRefManagement();
         printf("\n\n------Automatic Safe Ref Example:\n");
         testAutomatedSafeRefManagement();
