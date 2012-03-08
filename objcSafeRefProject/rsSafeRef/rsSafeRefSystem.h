@@ -8,7 +8,8 @@
 // Released under MIT license
 
 #import <Foundation/Foundation.h>
-
+#define safeRefNew(type, var, value) type var; [value registerSafeRef:&var]
+#define safeRefSelf(var) rs_registerSafeRef(&var);
 
 id rs_storeSafeRef(id *object, id value);
 id rs_registerSafeRef(id *object);

@@ -45,31 +45,32 @@ void testManualSafeRefManagement(){
 }
 void testAutomatedSafeRefManagement(){
     
+//#define x a <-- b x a;[b registerWeakRef:a]
     NSArray *obj=[[NSArray alloc] initWithObjects:@"obj",@"key", nil];
-    [obj registerSafeRef:&obj];
-    NSDictionary *obj1;
-    [obj registerSafeRef:&obj1];
-    NSDictionary *obj2;
-    [obj registerSafeRef:&obj2];
-    NSDictionary *obj3;
-    [obj registerSafeRef:&obj3];
-    NSDictionary *obj4;
-    [obj registerSafeRef:&obj4];
     
+    safeRefSelf(obj);
     
-    
-    
+    safeRefNew(NSArray *, obj1, obj);
+    safeRefNew(NSArray *, obj2, obj);
+    safeRefNew(NSArray *, obj3, obj);
+    safeRefNew(NSArray *, obj4, obj);
+    safeRefNew(NSArray *, copy2, obj);
+
+    NSLog(@"1: %@",obj);
     NSLog(@"1: %@",obj1);
     NSLog(@"2: %@",obj2);
     NSLog(@"3: %@",obj3);
     NSLog(@"4: %@",obj4);
+    NSLog(@"4: %@",copy2);
     
     [obj release];
     
+    NSLog(@"1: %@",obj);
     NSLog(@"1: %@",obj1);
     NSLog(@"2: %@",obj2);
     NSLog(@"3: %@",obj3);
     NSLog(@"4: %@",obj4);
+    NSLog(@"4: %@",copy2);
 }
 int main(int argc, const char * argv[])
 {
