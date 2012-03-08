@@ -8,6 +8,7 @@
 // Released under MIT license
 
 #include "rsSafeRefSystem.h"
+#import <objc/runtime.h>
 
 typedef struct __rs_safe_ref{
     id *object;
@@ -132,4 +133,30 @@ void rs_nullSafeRef(id value){
     dispatch_release(q);
     
 }
+void MethodSwizzle(Class c, SEL orig, SEL new){
+    Method origMethod = class_getInstanceMethod(c, orig);
+    Method newMethod = class_getInstanceMethod(c, new);
+    if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod)))
+        class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+    else
+        method_exchangeImplementations(origMethod, newMethod);
+}
+static IMP deallocFunctionIMP=nil;
+@implementation NSObject (SafeRef)
 
+-(void)registerSafeRef:(id *)ref{
+    rs_storeSafeRef(ref, self);
+    static dispatch_once_t registerSafeRefOnceToken;
+    dispatch_once(&registerSafeRefOnceToken, ^{
+        deallocFunctionIMP=[NSObject instanceMethodForSelector:@selector(dealloc)];
+        MethodSwizzle([NSObject class],@selector(dealloc),@selector(nullSafeRefsAndDealloc));
+    });
+    
+    //isSwizzled=TRUE;
+}
+
+-(void)nullSafeRefsAndDealloc{
+    rs_nullSafeRef(self);
+    deallocFunctionIMP(self,@selector(dealloc));
+}
+@end

@@ -11,7 +11,6 @@
 		49FFD8DC1507F91600793691 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FFD8DB1507F91600793691 /* main.m */; };
 		49FFD8E01507F91600793691 /* objcSafeRefProject.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49FFD8DF1507F91600793691 /* objcSafeRefProject.1 */; };
 		49FFD8EB1507F94600793691 /* rsSafeRefSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FFD8E81507F92900793691 /* rsSafeRefSystem.m */; };
-		49FFD8EC1507F94800793691 /* SafeRefObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FFD8EA1507F92900793691 /* SafeRefObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,8 +34,6 @@
 		49FFD8DF1507F91600793691 /* objcSafeRefProject.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = objcSafeRefProject.1; sourceTree = "<group>"; };
 		49FFD8E71507F92900793691 /* rsSafeRefSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rsSafeRefSystem.h; sourceTree = "<group>"; };
 		49FFD8E81507F92900793691 /* rsSafeRefSystem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rsSafeRefSystem.m; sourceTree = "<group>"; };
-		49FFD8E91507F92900793691 /* SafeRefObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafeRefObject.h; sourceTree = "<group>"; };
-		49FFD8EA1507F92900793691 /* SafeRefObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeRefObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +97,6 @@
 			children = (
 				49FFD8E71507F92900793691 /* rsSafeRefSystem.h */,
 				49FFD8E81507F92900793691 /* rsSafeRefSystem.m */,
-				49FFD8E91507F92900793691 /* SafeRefObject.h */,
-				49FFD8EA1507F92900793691 /* SafeRefObject.m */,
 			);
 			path = rsSafeRef;
 			sourceTree = "<group>";
@@ -158,7 +153,6 @@
 			files = (
 				49FFD8DC1507F91600793691 /* main.m in Sources */,
 				49FFD8EB1507F94600793691 /* rsSafeRefSystem.m in Sources */,
-				49FFD8EC1507F94800793691 /* SafeRefObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

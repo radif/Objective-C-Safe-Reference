@@ -9,7 +9,6 @@
 
 #import <Foundation/Foundation.h>
 #import "rsSafeRefSystem.h"
-#import "SafeRefObject.h"
 
 void testManualSafeRefManagement(){
     NSString *str=@"SampleString";
@@ -46,15 +45,15 @@ void testManualSafeRefManagement(){
 }
 void testAutomatedSafeRefManagement(){
     
-    SafeRefObject *obj=[SafeRefObject new];
+    NSArray *obj=[[NSArray alloc] initWithObjects:@"obj",@"key", nil];
     [obj registerSafeRef:&obj];
-    SafeRefObject *obj1;
+    NSDictionary *obj1;
     [obj registerSafeRef:&obj1];
-    SafeRefObject *obj2;
+    NSDictionary *obj2;
     [obj registerSafeRef:&obj2];
-    SafeRefObject *obj3;
+    NSDictionary *obj3;
     [obj registerSafeRef:&obj3];
-    SafeRefObject *obj4;
+    NSDictionary *obj4;
     [obj registerSafeRef:&obj4];
     
     
@@ -83,8 +82,12 @@ int main(int argc, const char * argv[])
         testManualSafeRefManagement();
         printf("\n\n------Automatic Safe Ref Example:\n");
         testAutomatedSafeRefManagement();
+        testAutomatedSafeRefManagement();
+        testAutomatedSafeRefManagement();
         
         
+        
+    
         
         
         
