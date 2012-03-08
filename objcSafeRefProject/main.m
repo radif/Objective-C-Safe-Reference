@@ -45,7 +45,6 @@ void testManualSafeRefManagement(){
 }
 void testAutomatedSafeRefManagement(){
     
-//#define x a <-- b x a;[b registerWeakRef:a]
     NSArray *obj=[[NSArray alloc] initWithObjects:@"obj",@"key", nil];
     
     safeRefSelf(obj);
